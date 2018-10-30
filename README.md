@@ -4,7 +4,7 @@ You can use the [editor on GitHub](https://github.com/anselm-baur/p1/edit/master
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-<img src="https://github.com/anselm-baur/python_templates/blob/master/fig/plot.jpg" alt="data points and fit">
+<img src="https://github.com/anselm-baur/python_templates/blob/master/fig/plot.jpg" alt="data points and fit" style="width:500px;height:600px;">
 
 ### Required import packages
 
