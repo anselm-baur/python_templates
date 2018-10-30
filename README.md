@@ -6,6 +6,8 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 <img src="https://github.com/anselm-baur/python_templates/blob/master/fig/plot.jpg" alt="data points and fit" style="width:500px;height:600px;">
 
+![useful image](https://github.com/anselm-baur/python_templates/blob/master/fig/plot.jpg)
+
 ### Required import packages
 
 ```python
