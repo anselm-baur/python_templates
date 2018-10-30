@@ -14,6 +14,22 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 import numpy as np
 import matplotlib.pyplot as plt
+```
+
+Define the fit function with fit parameters a, b, c, ...
+
+```python
+def func(x, a, b):
+    return(a*x+b)
+```
+
+Fit the data points.
+```python
+popt_1, pcov_1 = curve_fit(func, x_raw, y_raw,sigma=y_err)
+a_1 = round(popt_1[0], 4)
+b_1 = round(popt_1[1], 4)
+perr_1 = np.sqrt(np.diag(pcov_1))
+```
 
 Syntax highlighted code block
 
