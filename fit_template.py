@@ -26,8 +26,8 @@ y_err = delta
 
 print(y_err)
 # Achsenausschnitt auf der x und y Achse
-x_scal = np.array([0.1,0.3])
-y_scal = np.array([6,7])
+x_scal = np.array([0.1,0.25])
+y_scal = np.array([6.1,6.7])
 
 # FIGURE
 fig = plt.figure(figsize=(10,10))
@@ -47,11 +47,11 @@ perr_1 = np.sqrt(np.diag(pcov_1))
 
 
 ###################################### Hier nur Style #################################
-xmajor_ticks = np.arange(x_scal[0],x_scal[1]+0.01,(x_scal[1]-x_scal[0])/4)
-xminor_ticks = np.arange(x_scal[0],x_scal[1],(x_scal[1]-x_scal[0])/20)
+xmajor_ticks = np.arange(x_scal[0],x_scal[1]+0.01,(x_scal[1]-x_scal[0])/5)
+xminor_ticks = np.arange(x_scal[0],x_scal[1],(x_scal[1]-x_scal[0])/50)
 
-ymajor_ticks = np.arange(y_scal[0],y_scal[1]+0.1,(y_scal[1]-y_scal[0])/10)
-yminor_ticks = np.arange(y_scal[0],y_scal[1],(y_scal[1]-y_scal[0])/100)
+ymajor_ticks = np.arange(y_scal[0],y_scal[1]+0.001,(y_scal[1]-y_scal[0])/6)
+yminor_ticks = np.arange(y_scal[0],y_scal[1],(y_scal[1]-y_scal[0])/60)
 
 ax.set_xlim(x_scal[0],x_scal[1])
 ax.set_ylim(y_scal[0], y_scal[1])
@@ -76,7 +76,7 @@ ax.set_ylabel(r'$\ln(N\cdot r^2)$', fontsize=18)
 
 
 
-ax.errorbar(x_raw,y_raw, xerr=0, yerr=y_err, fmt='o', c='b', capsize=2, elinewidth=0.5,  label="ohne Cd") # Messdatenus
+ax.errorbar(x_raw,y_raw, xerr=0, yerr=y_err, fmt='o', c='b', capsize=2, elinewidth=0.5,  label="Data Points") # Messdatenus
 ax.plot(x_fit,y_fit, 'r')
 ax.text(0.15, 6.8, r'$\ln(N\cdot r^2)$ = '+str(a_1)+r'$\pm$'+str(round(perr_1[0],3))+r'$\cdot r^{-1}}$ + '+ str(abs(b_1))+r'$\pm$'+str(round(perr_1[1],3)), fontsize=16)
 ax.legend( loc="upper right",  prop={'size':16}).get_frame().set_linewidth(0.5)
@@ -84,4 +84,4 @@ ax.legend( loc="upper right",  prop={'size':16}).get_frame().set_linewidth(0.5)
 plt.show()
 
 # Save figure
-fig.savefig('../fig/plot.eps')
+fig.savefig('fig/plot.jpg')
