@@ -1,8 +1,6 @@
 ## Python Templates
 
-You can use the [editor on GitHub](https://github.com/anselm-baur/p1/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Simple and nice plot and fit template for single data points.
 
 ![useful image](https://raw.githubusercontent.com/anselm-baur/python_templates/master/fig/plot.jpg)
 
