@@ -4,7 +4,7 @@
 #                                                       #
 #   Vorlage fuer Plots                                  #
 #   Anselm Baur                                         #
-#   Oktober 2016                                        #
+#   Oktober 2018                                        #
 #                                                       #
 #########################################################
 
@@ -29,6 +29,14 @@ print(y_err)
 x_scal = np.array([0.1,0.25])
 y_scal = np.array([6.1,6.7])
 
+# Number of ticks of each axes
+x_num_major_tick = 5
+y_num_major_tick = 6
+
+
+x_axis_label = "x-Achse"
+y_axis_label = "y-Achse"
+
 # FIGURE
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(1,1,1)
@@ -37,21 +45,23 @@ ax.clear()
 # FIT
 def func(x, a, b):
     return(a*x+b)
+
+
 popt_1, pcov_1 = curve_fit(func, x_raw, y_raw,sigma=y_err)
-x_fit = np.arange(0.1,0.25,0.010)
-y_fit = func(x_fit, popt_1[0], popt_1[1])
 a_1 = round(popt_1[0], 4)
 b_1 = round(popt_1[1], 4)
 perr_1 = np.sqrt(np.diag(pcov_1))
 
+x_fit = np.arange(0.1,0.25,0.010)
+y_fit = func(x_fit, popt_1[0], popt_1[1])
 
 
 ###################################### Hier nur Style #################################
-xmajor_ticks = np.arange(x_scal[0],x_scal[1]+0.01,(x_scal[1]-x_scal[0])/5)
-xminor_ticks = np.arange(x_scal[0],x_scal[1],(x_scal[1]-x_scal[0])/50)
+xmajor_ticks = np.arange(x_scal[0],x_scal[1]+0.01,(x_scal[1]-x_scal[0])/x_num_major_tick)
+xminor_ticks = np.arange(x_scal[0],x_scal[1],(x_scal[1]-x_scal[0])/(x_num_major_tick*10))
 
-ymajor_ticks = np.arange(y_scal[0],y_scal[1]+0.001,(y_scal[1]-y_scal[0])/6)
-yminor_ticks = np.arange(y_scal[0],y_scal[1],(y_scal[1]-y_scal[0])/60)
+ymajor_ticks = np.arange(y_scal[0],y_scal[1]+0.001,(y_scal[1]-y_scal[0])/y_num_major_tick)
+yminor_ticks = np.arange(y_scal[0],y_scal[1],(y_scal[1]-y_scal[0])/(y_num_major_tick*10))
 
 ax.set_xlim(x_scal[0],x_scal[1])
 ax.set_ylim(y_scal[0], y_scal[1])
@@ -71,14 +81,14 @@ ax.tick_params("both", length=5, which="minor")
 ax.grid(which="major", alpha=0.5)
 ######################################################################################
 
-ax.set_xlabel(r'Abstand $r$ in m', fontsize=18)
-ax.set_ylabel(r'$\ln(N\cdot r^2)$', fontsize=18)
+ax.set_xlabel(x_axis_label, fontsize=18)
+ax.set_ylabel(y_axis_label, fontsize=18)
 
 
 
 ax.errorbar(x_raw,y_raw, xerr=0, yerr=y_err, fmt='o', c='b', capsize=2, elinewidth=0.5,  label="Data Points") # Messdatenus
-ax.plot(x_fit,y_fit, 'r')
-ax.text(0.15, 6.8, r'$\ln(N\cdot r^2)$ = '+str(a_1)+r'$\pm$'+str(round(perr_1[0],3))+r'$\cdot r^{-1}}$ + '+ str(abs(b_1))+r'$\pm$'+str(round(perr_1[1],3)), fontsize=16)
+ax.plot(x_fit,y_fit, 'r', label = "Data Fit")
+ax.text(0.101, 6.13, r'$\ln(N\cdot r^2)$ = '+str(a_1)+r'$\pm$'+str(round(perr_1[0],3))+r'$\cdot r^{-1}}$ + '+ str(abs(b_1))+r'$\pm$'+str(round(perr_1[1],3)), fontsize=16)
 ax.legend( loc="upper right",  prop={'size':16}).get_frame().set_linewidth(0.5)
 
 plt.show()
