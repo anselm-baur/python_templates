@@ -13,6 +13,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
+### Insert data points
+```python
+x_data = np.array([39674,35656,32512,29436,27052,23805,21511,20335,18657,16621,15119,13358,12764,11604,10402,9646])
+y_data = np.array(np.arange(0.14,0.22,0.005))
+```
+Process data points for analysis
+```python
+x_raw = x_data
+y_raw = np.log(N*y_data**2)
+y_err = delta
+```
+
+
 ### Fit the data points
 Define the fit function with fit parameters a, b, c, ...
 
@@ -31,15 +44,20 @@ perr_1 = np.sqrt(np.diag(pcov_1))
 
 ### Print the data points and the fit
 
-Adjust plot range and the ticks.
+Adjust plot range and the number of ticks.
 ```pyhton
 x_scal = np.array([0.1,0.25])
 y_scal = np.array([6.1,6.7])
-```
-```python
-xmajor_ticks = np.arange(x_scal[0],x_scal[1]+0.01,(x_scal[1]-x_scal[0])/5)
-xminor_ticks = np.arange(x_scal[0],x_scal[1],(x_scal[1]-x_scal[0])/50)
 
-ymajor_ticks = np.arange(y_scal[0],y_scal[1]+0.001,(y_scal[1]-y_scal[0])/6)
-yminor_ticks = np.arange(y_scal[0],y_scal[1],(y_scal[1]-y_scal[0])/60)
+# Number of ticks of each axes
+x_num_major_tick = 5
+y_num_major_tick = 6
+```
+
+
+### Save plot
+
+Use image format *.eps for vector graphics
+```python
+fig.savefig('fig/plot.eps')
 ```
