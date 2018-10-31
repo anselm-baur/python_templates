@@ -1,6 +1,6 @@
 ## Python Templates
 
-Simple and nice plot and fit template for single data points.
+Simple and nice data fit and plot template for single data points.
 
 ![useful image](https://raw.githubusercontent.com/anselm-baur/python_templates/master/fig/plot.jpg)
 
